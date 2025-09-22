@@ -178,6 +178,7 @@ class CTFlowAnalyzer:
                     'kali': ['file archive.rar', 'unrar l archive.rar', 'binwalk archive.rar'],
                     'windows': ['WinRAR', '7zip', 'strings.exe archive.rar']
                 }
+            },
             '.7z': {
                 'category': CTFCategory.FORENSICS,
                 'tools': ['file', '7z', 'binwalk', 'strings'],
@@ -306,7 +307,7 @@ class CTFlowAnalyzer:
             print(f"  {i}. {tool}")
         print()
 
-        self._print_learning_tips(file_info['category'])
+        self.print_tips(file_info['category'])
 
         solved = input("Is your problem solved? [y/N]: ").strip().lower()
         if solved and solved[0] == 'y':
@@ -315,7 +316,7 @@ class CTFlowAnalyzer:
             self._print_unresolved_hints(file_info['category'])
             print("Hope this might help!!")
 
-    def _print_learning_tips(self, category):
+    def print_tips(self, category):
         tips = {
             CTFCategory.WEB: [
                 "Check the web page source code carefully.",
@@ -398,7 +399,7 @@ CTF CATEGORIES:
   Binary Exploitation - Exploiting binary vulnerabilities
 
 CTFlow is in early development stage!
-Visit: https://github.com/Pha3thon to contribute or report issues
+Visit: https://github.com/Pha3thon to contribute or report issues.
 """
         print(help_text)
 
